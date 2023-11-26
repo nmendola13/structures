@@ -1,4 +1,3 @@
-package csc207.testing;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -7,35 +6,36 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Tests of the assosiative array methods.
+ * 
  * @author Noah
  */
 public class Tests {
-  /**
-   * A test that should succeed.
-   */
-  public void NoahTest1() {
-  AssociativeArray<String, Integer> aa = new AssociativeArray<>();
-  aa.set("apples", 5);
-  aa.set("bananas", 3);
   
-  assertEquals(2, aa.size());
-}
+  public void NoahTest1() throws KeyNotFoundException {
+    AssociativeArray<String, Integer> aa = new AssociativeArray<>();
+    aa.set("item1", 5);
+    aa.set("item2", 3);
 
-public void NoahTest2() {
-  AssociativeArray<String, Integer> aa = new AssociativeArray<>();
+    assertEquals(5, aa.get("item1"));
+  }
 
-  aa.set("apples", 5);
-  aa.set("bananas", 3);
-  aa.remove("apples");
-  
-  assertEquals(1, aa.size());
-}
+  @Test
+  public void NoahTest2() {
+    AssociativeArray<String, Integer> aa = new AssociativeArray<>();
 
-public void NoahEdge1() {
-  AssociativeArray<String, Integer> aa = new AssociativeArray<>();
+    aa.set("item1", 5);
+    aa.set("item2", 3);
+    aa.remove("item1");
 
-  aa.remove("oranges"); // remove non-existent key
-  
-  assertEquals(0, aa.size()); // size should remain 0
-}
+    assertEquals(1, aa.size());
+  }
+
+  @Test
+  public void NoahEdge1() {
+    AssociativeArray<String, Integer> aa = new AssociativeArray<>();
+
+    aa.remove("item3"); // remove non-existent key
+
+    assertEquals(0, aa.size()); // size remains 0
+  }
 }
